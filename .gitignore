@@ -145,3 +145,7 @@ _ReSharper*/
 *.sbr
 obj/
 [Bb]in
+
+# Custom #
+AndroidManifest.template.xml
+PZXing.res

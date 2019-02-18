@@ -1,0 +1,44 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{E0D54277-016C-4A7A-BE92-33F767AEE39A}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="PZXing.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PZXing">
+        <MSBuild Projects="PZXing.dproj"/>
+    </Target>
+    <Target Name="PZXing:Clean">
+        <MSBuild Projects="PZXing.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PZXing:Make">
+        <MSBuild Projects="PZXing.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PZXing"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PZXing:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PZXing:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+    <ItemGroup Condition="'$(BuildGroup)'=='BuildAll'">
+        <BuildGroupProject Include="PZXing.dproj">
+            <ProjectGuid>{3D6E391D-0770-43F0-8FB8-1B0331172226}</ProjectGuid>
+            <Configurations>Debug;Release</Configurations>
+            <Platforms>Android;iOSDevice32;iOSDevice64;Win32;Win64</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+    </ItemGroup>
+</Project>
