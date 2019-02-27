@@ -176,11 +176,14 @@ begin
 end;
 
 destructor TVersion.Destroy;
+{$IFNDEF AUTOREFCOUNT}
 var
   ecBlocks : TECBlocks;
   ECB : TECB;
+{$ENDIF}
 begin
   FalignmentPatternCenters := nil;
+  {$IFNDEF AUTOREFCOUNT}
   for ecBlocks in FecBlocks do
   begin
     for ecb in ecBlocks.ecBlocks do
@@ -188,8 +191,9 @@ begin
       ECB.Free;
       //ECB := nil;
     end;
-    ecBlocks.free;
+    ecBlocks.Free;
   end;
+  {$ENDIF}
 
   FecBlocks := nil;
 
@@ -656,14 +660,18 @@ begin
 end;
 
 class procedure TVersion.ClassFinal();
+{$IFNDEF AUTOREFCOUNT}
 var version :Tversion;
+{$ENDIF}
 begin
   TVersion.VERSION_DECODE_INFO := nil;
-  
+
+  {$IFNDEF AUTOREFCOUNT}
   for version in TVersion.BuildVersions do
   begin
     version.Free;
   end;
+  {$ENDIF}
   
   TVersion.BuildVersions :=nil;
 end;

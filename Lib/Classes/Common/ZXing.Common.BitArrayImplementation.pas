@@ -381,7 +381,7 @@ begin
   if (ending < start) then
   begin
     Result := False; // there is a bug here some how. We just exits with false
-    //exit;
+    exit;
     //raise EArgumentException.Create('End is greater then start');
   end;
 

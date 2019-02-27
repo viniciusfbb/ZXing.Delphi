@@ -128,11 +128,15 @@ begin
 end;
 
 class procedure TDataMask.FinalizeClass;
+{$IFNDEF AUTOREFCOUNT}
 var
   dam: TDataMask;
+{$ENDIF}
 begin
+  {$IFNDEF AUTOREFCOUNT}
   for dam in TDataMask.DATA_MASKS do
     dam.Free;
+  {$ENDIF}
   DATA_MASKS := nil;
 end;
 

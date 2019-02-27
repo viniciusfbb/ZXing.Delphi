@@ -268,8 +268,10 @@ begin
       ecLevel, hints);
 
   finally
+    {$IFNDEF AUTOREFCOUNT}
     for DataBlock in dataBlocks do
       DataBlock.Free;
+    {$ENDIF}
     FreeAndNil(formatInfo);
   end;
 

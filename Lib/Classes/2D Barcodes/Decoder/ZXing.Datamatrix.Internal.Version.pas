@@ -153,14 +153,18 @@ begin
 end;
 
 class procedure TVersion.ClassFinal();
+{$IFNDEF AUTOREFCOUNT}
 var
   Version: TVersion;
+{$ENDIF}
 begin
 
+  {$IFNDEF AUTOREFCOUNT}
   for Version in TVersion.buildVersions do
   begin
     Version.Free;
   end;
+  {$ENDIF}
 
   TVersion.buildVersions := nil;
 end;
