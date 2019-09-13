@@ -37,7 +37,7 @@
         <BuildGroupProject Include="PZXing.dproj">
             <ProjectGuid>{3D6E391D-0770-43F0-8FB8-1B0331172226}</ProjectGuid>
             <Configurations>Debug;Release</Configurations>
-            <Platforms>Android;iOSDevice32;iOSDevice64;Win32;Win64</Platforms>
+            <Platforms>Android;iOSDevice64;Win32;Win64</Platforms>
             <Enabled>True</Enabled>
         </BuildGroupProject>
     </ItemGroup>
